@@ -16,7 +16,7 @@ function dataMyTodo() {
                 if (!element.ProjectId) {
                     if (element.status === 'todo') {
                         $('#todo').append(
-                            `<div class="d-flex flex-column mb-3" style="border: solid 2px black; border-radius: 10px;">
+                            `<div class="d-flex flex-column mb-3" style="border: solid 5px red; border-radius: 10px;">
                             <div class="pl-4 pt-2 pb-2">
                                 <h1>${element.title}</h1>
                                 <h3>${element.description}</h3>
@@ -39,7 +39,7 @@ function dataMyTodo() {
                         )
                     } else if (element.status === 'doing') {
                         $('#doing').append(
-                            `<div class="d-flex flex-column mb-3" style="border: solid 2px black; border-radius: 10px;">
+                            `<div class="d-flex flex-column mb-3" style="border: solid 5px green; border-radius: 10px;">
                             <div class="pl-4 pt-2 pb-2">
                                 <h1>${element.title}</h1>
                                 <h3>${element.description}</h3>
@@ -66,7 +66,7 @@ function dataMyTodo() {
                         )
                     } else {
                         $('#done').append(
-                            `<div class="d-flex flex-column mb-3" style="border: solid 2px black; border-radius: 10px;">
+                            `<div class="d-flex flex-column mb-3" style="border: solid 5px blue; border-radius: 10px;">
                             <div class="pl-4 pt-2 pb-2">
                                 <h1>${element.title}</h1>
                                 <h3>${element.description}</h3>
@@ -94,7 +94,7 @@ function dataMyTodo() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })
@@ -121,7 +121,7 @@ function findTodo(id, check) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })
@@ -161,7 +161,7 @@ function updateTodoController(tempId) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })
@@ -182,7 +182,7 @@ function changeStatusDownTodo(id) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })
@@ -197,13 +197,14 @@ function changeStatusUpTodo(id) {
         }
     })
         .done(todo => {
+            console.log('okk')
             dataMyTodo()
         })
         .fail(err => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })
@@ -219,16 +220,15 @@ function deleteTodo(id) {
         }
     })
         .done(todo => {
-            if (checkIsProject) {
-                myProjectTodo(projectId)
-                dataMyTodo()
-            }
+            let fixedId = `lucu${id}`
+            $("#" + fixedId).remove();
+            dataMyTodo()
         })
         .fail(err => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })
@@ -252,13 +252,19 @@ function addTodoController() {
     })
         .done((todo) => {
             $('#exampleModal').modal('hide')
+            $('#add_title').val('')
+            $('#add_description').val('');
+            $('#add_due_date').val('');
             dataMyTodo()
         })
         .fail(err => {
+            $('#add_title').val('')
+            $('#add_description').val('');
+            $('#add_due_date').val('');
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })

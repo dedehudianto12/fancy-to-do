@@ -23,14 +23,16 @@ class ProjectController {
     }
 
     static findAll(req, res, next) {
-        console.log(req.userId)
         Project.findAll({ include: [User] })
             .then(datas => {
                 let temp = []
                 datas.forEach(element => {
                     let user = element.dataValues.Users
                     user.forEach(el => {
+                        // console.log(el.dataValues)
+                        console.log(el.dataValues.id, req.userId)
                         if (el.dataValues.id === req.userId) {
+                            // console.log(element.dataValues.Users)
                             temp.push(element)
                         }
                     })

@@ -3,6 +3,7 @@ function onSignIn(googleUser) {
     event.preventDefault();
     var profile = googleUser.getBasicProfile();
     var id_token = googleUser.getAuthResponse().id_token;
+
     let email = profile.U3
     if (email === undefined) {
         email = profile.Au
@@ -22,7 +23,6 @@ function onSignIn(googleUser) {
             checkUser();
         })
         .fail((err) => {
-            console.log(err)
             Swal.fire({
                 title: 'Ops...',
                 type: 'error',
@@ -54,7 +54,7 @@ function loginController() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })
@@ -84,7 +84,7 @@ function registerController() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: `${err.responseJSON}`,
+                text: `${err.responseJSON.message}`,
                 footer: '<a href>Why do I have this issue?</a>'
             })
         })

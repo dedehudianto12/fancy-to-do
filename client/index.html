@@ -14,9 +14,9 @@
     <title>Fancy Todo</title>
 </head>
 
-<body>
+<body style="background-color: black;color: white;">
     <div id="home">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="">Fancy Todo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,10 +33,6 @@
                         <a class="nav-link" onclick="projectTodo(event)" href="#">Project</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0 mr-2">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
                 <div>
                     <button onclick="logOut()" type="button" class="btn btn-primary">Log Out</button>
                 </div>
@@ -94,6 +90,7 @@
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
+
                             <div class="modal-body">
                                 <form id="addTodo">
                                     <div class="form-group">
@@ -156,12 +153,12 @@
                                 aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                        <!-- <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLongTitle">New Project</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
-                                        </div>
+                                        </div> -->
                                         <div class="modal-body">
                                             <form id="createProject">
                                                 <div class="form-row">
@@ -183,47 +180,48 @@
                             <h2>Members</h2>
                             <div class="row" id="myFriends"></div>
                         </div>
-                        <div id="inviteButtons">
-                            <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-primary" data-toggle="modal"
-                                data-target="#exampleModal2">
-                                Invite
-                            </button>
+                        <div class="d-flex">
+                            <div id="inviteButtons" class="mr-2">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal2">
+                                    Invite
+                                </button>
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Invite Another Member</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="inviteMember">
-                                                <div class="form-group">
-                                                    <label for="formGroupExampleInput">Email</label>
-                                                    <input type="email" class="form-control" id="emailForInvite"
-                                                        placeholder="Example input placeholder">
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Submit</button>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                <!-- Modal -->
+                                <div class="modal fade ide-footer" id="exampleModal2" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Invite Another Member
+                                                </h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form id="inviteMember">
+                                                    <div class="form-group">
+                                                        <label for="formGroupExampleInput">Email</label>
+                                                        <input type="email" class="form-control" id="emailForInvite"
+                                                            placeholder="Example input placeholder">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div id="leaveProject">
+                                <button type="button" class="btn btn-danger">Leave</button>
+                            </div>
                         </div>
+
                     </div>
-                    <div id="leaveProject">
-                        <button type="button" class="btn btn-danger">Leave</button>
-                    </div>
+
                 </div>
                 <div class="col">
                     <div class="d-flex flex-column" id="myProject">
@@ -300,19 +298,19 @@
         <div class="container" id="loginForm">
             <div class=" row">
                 <div class="col" style="margin-top: 10%;">
-                    <h1 class="text-center" style="color: black;">Log In with</h1>
+                    <h1 class="text-center" style="color: white;">Log In with</h1>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-4 "
-                    style="background-color: black; border-radius: 10px; padding-top: 20px; padding-bottom: 20px;">
+                    style="background-color: blanchedalmond; border-radius: 10px; padding-top: 20px; padding-bottom: 20px;color: black !important;">
                     <form id="submitLogin">
                         <div class="form-group">
-                            <label for="exampleInputEmail1" style="color: white;">Email address</label>
+                            <label for="exampleInputEmail1">Email address</label>
                             <input type="email" class="form-control" id="email_login" aria-describedby="emailHelp">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1" style="color: white" ;>Password</label>
+                            <label for="exampleInputPassword1">Password</label>
                             <input type="password" class="form-control" id="password_login">
                         </div>
                         <button type="submit" class="btn btn-primary text-center"
@@ -335,12 +333,12 @@
         <div class="container" id="registerForm">
             <div class="row">
                 <div class="col" style="margin-top: 10%;">
-                    <h1 class="text-center" style="color: black;">Sign Up with</h1>
+                    <h1 class="text-center" style="color: whitek;">Sign Up with</h1>
                 </div>
             </div>
             <div class="row justify-content-center">
                 <div class="col-4 "
-                    style="background-color: black; border-radius: 10px; padding-top: 20px; padding-bottom: 20px;">
+                    style="background-color: rgb(141, 151, 163); border-radius: 10px; padding-top: 20px; padding-bottom: 20px;">
                     <form id="submitRegister">
                         <div class="form-group">
                             <label for="username" style="color: white;">Username</label>
@@ -354,16 +352,22 @@
                             <label for="exampleInputPassword1" style="color: white" ;>Password</label>
                             <input type="password" class="form-control" id="password_register">
                         </div>
-                        <button type="submit" class="btn btn-primary" style="margin-left: 30px;">Submit</button>
-                    </form>
-                    <div class="cotainer">
-                        <div class="row mt-2">
-                            <div class="col text-center">
-                                <button onclick="login()" type="button" class="btn btn-light"
-                                    style="margin-left: 60px;">Login</button>
+                        <div class="d-flex">
+                            <div>
+                                <button type="submit" class="btn btn-primary" style="margin-left: 30px;">Submit</button>
+                            </div>
+                            <div>
+                                <div class="row mt-2">
+                                    <div class="col text-center">
+                                        <button onclick="login()" type="button" class="btn btn-light mt-0"
+                                            style="margin-left: 60px;">Login</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+
+                    </form>
+
                 </div>
             </div>
         </div>

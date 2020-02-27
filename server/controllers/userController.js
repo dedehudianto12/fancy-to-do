@@ -43,6 +43,7 @@ class UserController {
 
     static loginGoogle(req, res, next) {
         let email = req.body.email;
+        console.log(email)
         User.findOne({
             where:
                 { email: email }

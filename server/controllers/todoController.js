@@ -44,6 +44,7 @@ class TodoController {
     }
 
     static destroy(req, res, next) {
+
         Todo.destroy({ where: { id: req.params.id } })
             .then(data => {
                 if (data > 0) {
@@ -75,13 +76,21 @@ class TodoController {
         Todo.findByPk(req.params.id)
             .then(todo => {
                 if (todo.status === 'todo') {
-                    Todo.update({ status: 'doing' }, { where: { id: todoId } })
+                    Todo.update({ status: 'doing' }, {
+                        where: { id: todoId },
+                        returning: true,
+                        plain: true
+                    })
                         .then(data => {
                             res.status(200).json(data)
                         })
                         .catch(next)
                 } else if (todo.status === 'doing') {
-                    Todo.update({ status: 'done' }, { where: { id: todoId } })
+                    Todo.update({ status: 'done' }, {
+                        where: { id: todoId },
+                        returning: true,
+                        plain: true
+                    })
                         .then(data => {
                             res.status(200).json(data)
                         })
@@ -99,13 +108,21 @@ class TodoController {
         Todo.findByPk(req.params.id)
             .then(todo => {
                 if (todo.status === 'doing') {
-                    Todo.update({ status: 'todo' }, { where: { id: todoId } })
+                    Todo.update({ status: 'todo' }, {
+                        where: { id: todoId },
+                        returning: true,
+                        plain: true
+                    })
                         .then(data => {
                             res.status(200).json(data)
                         })
                         .catch(next)
                 } else if (todo.status === 'done') {
-                    Todo.update({ status: 'doing' }, { where: { id: todoId } })
+                    Todo.update({ status: 'doing' }, {
+                        where: { id: todoId },
+                        returning: true,
+                        plain: true
+                    })
                         .then(data => {
                             res.status(200).json(data)
                         })
